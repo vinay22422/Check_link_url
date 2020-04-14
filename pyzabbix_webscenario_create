@@ -23,9 +23,11 @@ if hosts:
 
     try:
         item = zapi.httptest.create(name='Google', hostid=host_id, authentication='0', retries='1', steps=[{'url': 'google.com', 'name': 'google', 'no': 1}])
+        item1 = zapi.trigger.create(description=i[8:],expression=expr,priority=4,manual_close=1)
+
     except ZabbixAPIException as e:
         print(e)
         sys.exit()
-    print(item)
+    print(item," ",item1)
 else:
     print("No hosts found")
